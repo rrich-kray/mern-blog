@@ -79,6 +79,8 @@ const typeDefs = gql`
 
     createComment(content: String!, user_id: ID!, post_id: ID!): Comment
     deleteComment(comment_id: ID!): Comment
+
+    createTag(tag_name: String!): Tag
   }
 `;
 

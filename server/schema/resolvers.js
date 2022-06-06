@@ -128,6 +128,10 @@ const resolvers = {
         },
       });
     },
+
+    createTag: async (parent, args, context) => {
+      return await Tag.create(args);
+    },
   },
 };
 
