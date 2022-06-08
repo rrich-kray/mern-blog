@@ -3,6 +3,7 @@ const Post = require("../models/Post");
 const Comment = require("../models/Comment");
 const Category = require("../models/Category");
 const { Tag } = require("../models");
+const sequelize = require("../config/connection");
 
 const resolvers = {
   Query: {

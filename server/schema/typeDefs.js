@@ -14,6 +14,7 @@ const typeDefs = gql`
     title: String
     content: String
     image_url: String
+    category_id: ID!
     user_id: ID
   }
 
