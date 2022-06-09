@@ -1,6 +1,7 @@
 const express = require("express");
-const { ApollosServer, ApolloServer } = require("apollo-server-express");
+const { ApolloServer } = require("apollo-server-express");
 const PORT = process.env.PORT || 3001;
+const { authMiddleware } = require("./utils/auth");
 
 const { typeDefs, resolvers } = require("./schema");
 const sequelize = require("./config/connection");
@@ -13,6 +14,7 @@ const startServer = async () => {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
+    // context: authMiddleware,
   });
 
   await server.start();
