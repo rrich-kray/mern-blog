@@ -2,8 +2,9 @@ const User = require("../models/User");
 const Post = require("../models/Post");
 const Comment = require("../models/Comment");
 const Category = require("../models/Category");
-const { Tag } = require("../models");
+const Tag = require("../models/Tag");
 const sequelize = require("../config/connection");
+const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
@@ -36,6 +37,14 @@ const resolvers = {
         where: {
           id: args.id,
         },
+        include: [
+          {
+            model: "comment",
+            where: {
+              post_id: args.id,
+            },
+          },
+        ],
       });
     },
 
@@ -98,15 +107,42 @@ const resolvers = {
         },
       });
     },
+
+    getLikesByPost: async (parent, args, context) => {
+      return await Likes.findAll({
+        where: {
+          post_id: args.post_id,
+        },
+      });
+    },
   },
 
   Mutation: {
     createUser: async (parent, args, context) => {
-      return await User.create(args);
+      const user = await User.create(args);
+      const token = signToken(user);
+      return { user, token };
+    },
+
+    login: async (parent, args, context) => {
+      const user = User.findOne({
+        where: {
+          email: args.email,
+          password: args.password,
+        },
+      });
+
+      if (!user) {
+        throw new AuthenticationError("Incorrect credentials provided");
+      }
+
+      const token = signToken(user);
+      return { token, user };
     },
 
     createPost: async (parent, args, context) => {
-      return await Post.create(args); // args will include user ID, which will come from context object
+      // args will need to contain user id of user who created it
+      return await Post.create(args);
     },
 
     deletePost: async (parent, args, context) => {
@@ -132,6 +168,10 @@ const resolvers = {
 
     createTag: async (parent, args, context) => {
       return await Tag.create(args);
+    },
+
+    createLike: async (parent, args, context) => {
+      return await Likes.create(args);
     },
   },
 };

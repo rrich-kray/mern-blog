@@ -35,6 +35,12 @@ const typeDefs = gql`
     tag_name: String
   }
 
+  type Likes {
+    id: ID!
+    post_id: ID!
+    user_id: ID!
+  }
+
   type Auth {
     token: ID
     user: User
@@ -59,6 +65,8 @@ const typeDefs = gql`
 
     getTags: [Tag]
     getTagById(tag_id: ID!): Tag
+
+    getLikesByPost(post_id: ID!): [Likes]
   }
 
   type Mutation {
@@ -74,7 +82,10 @@ const typeDefs = gql`
       content: String!
       image_url: String!
       user_id: ID!
+      category_id: ID!
     ): Post
+
+    login(email: String!, password: String!): Auth
 
     deletePost(post_id: ID!): Post
 
@@ -82,6 +93,8 @@ const typeDefs = gql`
     deleteComment(comment_id: ID!): Comment
 
     createTag(tag_name: String!): Tag
+
+    createLike(user_id: ID!, post_id: ID!): Likes
   }
 `;
 
