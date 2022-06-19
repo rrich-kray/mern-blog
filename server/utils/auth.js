@@ -27,8 +27,10 @@ module.exports = {
     return req;
   },
 
-  signToken: function ({ first_name, email, id }) {
-    const payload = [first_name, email, id];
+  // is this not being destructured properly when logging in?
+  signToken: function ({ id, email }) {
+    // will destructure these attributes from user object in both createUser and login instances
+    const payload = { email, id };
     return jwt.sign({ data: payload }, secret, { expiresIn: "2h" });
   },
 };

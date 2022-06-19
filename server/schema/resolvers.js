@@ -53,6 +53,11 @@ const resolvers = {
         where: {
           user_id: args.user_id,
         },
+        include: [
+          {
+            model: "user",
+          },
+        ],
       });
     },
 
@@ -125,19 +130,23 @@ const resolvers = {
     },
 
     login: async (parent, args, context) => {
-      const user = User.findOne({
+      const user = await User.findOne({
         where: {
           email: args.email,
           password: args.password,
         },
       });
+      // This returns the correct user
+      console.log(user);
 
-      if (!user) {
-        throw new AuthenticationError("Incorrect credentials provided");
-      }
+      // if (!user) {
+      //   throw new AuthenticationError("Incorrect credentials provided");
+      // }
 
       const token = signToken(user);
+      console.log(token);
       return { token, user };
+      // this returns a token in the response, but when decoded, null values are returned. Not so with createUser
     },
 
     createPost: async (parent, args, context) => {
