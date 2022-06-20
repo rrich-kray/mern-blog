@@ -11,7 +11,7 @@ This repository contains the code for the MERN Blog project.
 [contact](#contact)
 [license](#license)
 
-![Main screenshot](.client/src/assets/images/screen1.png)
+![Main screenshot](./client/src/assets/images/screen1.png)
 
 ## Description
 
