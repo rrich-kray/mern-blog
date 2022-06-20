@@ -7,8 +7,8 @@ This repository contains the code for the MERN Blog project.
 [description](#description)  
 [installation](#installation)  
 [usage](#usage)  
-[Utilizes](#utilizes)
-[contact](#contact)
+[Utilizes](#utilizes)  
+[contact](#contact)  
 [license](#license)
 
 ![Main screenshot](./client/src/assets/images/screen1.png)
