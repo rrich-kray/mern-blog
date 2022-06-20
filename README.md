@@ -21,8 +21,6 @@ Create posts of any content using MERN blog! This is an MVP build and only allow
 
 No installation required. Simply follow the link below:
 
-[link]
-
 ## How It Works
 
 MERN Blog consists of a SQL database and Express server on the backend, a React-built UI on the frontend, and a GraphQL API. The application uses the Apollo Client library to make queries/mutations to the backend. The database schema was built using Sequelize.
