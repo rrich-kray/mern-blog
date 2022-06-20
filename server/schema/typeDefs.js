@@ -14,7 +14,7 @@ const typeDefs = gql`
     title: String
     content: String
     image_url: String
-    category_id: ID!
+    category_id: ID
     user_id: ID
   }
 
@@ -27,7 +27,7 @@ const typeDefs = gql`
 
   type Category {
     id: ID
-    category_name: String!
+    category_name: String
   }
 
   type Tag {
@@ -37,8 +37,8 @@ const typeDefs = gql`
 
   type Likes {
     id: ID!
-    post_id: ID!
-    user_id: ID!
+    post_id: ID
+    user_id: ID
   }
 
   type Auth {
