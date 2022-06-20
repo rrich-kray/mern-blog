@@ -15,7 +15,7 @@ This repository contains the code for the MERN Blog project.
 
 ## Description
 
-MERN Blog is my fully-fledged MERN stack project that I developed entirely on my own. The current build only allows users of this project to create accounts, login and make article posts, however future iterations of this project will include commenting and liking functionality as well.
+Create posts of any content using MERN blog! This is an MVP build and only allows users of this project to create accounts, login and make article posts, however future iterations of this project will include commenting and liking functionality as well.
 
 ## Installation
 
