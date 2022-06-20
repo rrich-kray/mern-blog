@@ -15,7 +15,7 @@ This repository contains the code for the MERN Blog project.
 
 ## Description
 
-Create posts of any content using MERN blog! This is an MVP build and only allows users of this project to create accounts, login and make article posts, however future iterations of this project will include commenting and liking functionality as well.
+Create posts of any content using MERN blog! This is an MVP build and only allows users of this project to create accounts, login, add comments and make article posts, however future iterations of this project will include liking functionality as well.
 
 ## Installation
 
