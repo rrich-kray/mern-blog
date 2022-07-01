@@ -22,13 +22,14 @@
     position: absolute;
     top: 0%;
     left: 0%;
-    background: white;
     /* border-radius: 5px; */
     font-size: 1.5rem;
     font-weight: bold;
     font-style: italic;
     padding: 5px;
-    border-radius: 5px
+    border-radius: 5px;
+    backdrop-filter: blur(20px);
+    color: white
 }
 
 .tile-description-container {

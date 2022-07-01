@@ -29,6 +29,8 @@ const Main = ({
     fetchPolicy: "no-cache",
   });
 
+  console.log(currentColor);
+
   const context = useContext(AuthContext);
 
   const toggleMenuVisibility = () => {
@@ -193,6 +195,7 @@ const Main = ({
               post={post}
               changeActivePost={changeActivePost}
               acitvePost={activePost}
+              currentColor={currentColor}
             />
           ))}
         </div>

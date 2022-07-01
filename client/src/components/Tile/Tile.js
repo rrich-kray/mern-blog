@@ -1,7 +1,16 @@
 import React, { useState, useEfect } from "react";
+import { useQuery } from "@apollo/client";
+import { GET_CATEGORY_BY_ID } from "../../utils/queries";
 import "./Tile.css";
 
 const Tile = ({ post, changeActivePost, currentColor }) => {
+  console.log(post.category_id);
+  const { data } = useQuery(GET_CATEGORY_BY_ID, {
+    variables: { category_id: post.category_id },
+  });
+  console.log(data);
+  console.log(currentColor);
+
   return (
     <div className="post-tile" key={post.title}>
       <div className="post-tile" onClick={() => changeActivePost(post)}>
@@ -15,7 +24,7 @@ const Tile = ({ post, changeActivePost, currentColor }) => {
           }}
         >
           <span className="category" style={{ background: currentColor }}>
-            Category
+            {data && data.getCategoryById.category_name}
           </span>
         </div>
         <div className="tile-description-container">

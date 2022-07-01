@@ -69,6 +69,7 @@ export const GET_COMMENTS_BY_POST = gql`
     getCommentsByPost(post_id: $post_id) {
       id
       content
+      user_id
     }
   }
 `;

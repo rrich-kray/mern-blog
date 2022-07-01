@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useQuery, useLazyQuery } from "@apollo/client";
+import { useQuery, useLazyQuery, useMutation } from "@apollo/client";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { GET_COMMENTS_BY_POST } from "../../utils/queries";
+import { CREATE_COMMENT } from "../../utils/mutations";
 import { AuthContext } from "../../context/authContext";
 import "./Post.css";
 
@@ -11,10 +12,10 @@ const Post = ({ post, changeActivePost, currentColor }) => {
     content: "",
   });
 
-  console.log(formState);
+  console.log(context);
 
   const handleChange = (e) => {
-    const [name, value] = e.target;
+    const { name, value } = e.target;
     setFormState({
       ...formState,
       [name]: value,
@@ -23,6 +24,14 @@ const Post = ({ post, changeActivePost, currentColor }) => {
 
   const { data } = useQuery(GET_COMMENTS_BY_POST, {
     variables: { post_id: post.id },
+  });
+
+  const [createComment] = useMutation(CREATE_COMMENT, {
+    variables: {
+      content: formState.content,
+      user_id: context.user.data.id,
+      post_id: post.id,
+    },
   });
 
   return (
@@ -50,16 +59,21 @@ const Post = ({ post, changeActivePost, currentColor }) => {
         <div className="comments">
           {data &&
             data.getCommentsByPost.map((comment) => (
-              <div className="comment">{comment.content}</div>
+              <div key={comment.id} className="comment">
+                {comment.content}
+              </div>
             ))}
         </div>
         {context.user && (
-          <input
-            name="add-comment"
-            id="add-comment"
-            placeholder="Write you comment here"
-            onChange={handleChange}
-          ></input>
+          <div className="comment-container">
+            <input
+              name="content"
+              id="content"
+              placeholder="Write you comment here"
+              onChange={handleChange}
+            ></input>
+            <button onClick={() => createComment()}>Submit Comment</button>
+          </div>
         )}
       </div>
     </div>

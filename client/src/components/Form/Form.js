@@ -23,7 +23,7 @@ const Form = ({ formType, categories }) => {
     title: "",
     content: "",
     image_url: "",
-    category_id: "",
+    category_id: "1",
     user_id: "",
   });
 
