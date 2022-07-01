@@ -32,6 +32,9 @@ const Post = ({ post, changeActivePost, currentColor }) => {
       user_id: context.user.data.id,
       post_id: post.id,
     },
+    update(proxy) {
+      window.location.replace("/");
+    },
   });
 
   return (
