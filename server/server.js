@@ -2,6 +2,7 @@ const express = require("express");
 const { ApolloServer } = require("apollo-server-express");
 const PORT = process.env.PORT || 3001;
 const { authMiddleware } = require("./utils/auth");
+const path = require("path");
 
 const { typeDefs, resolvers } = require("./schema");
 const sequelize = require("./config/connection");
