@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Crete+Round&display=swap');
+
+.main {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    position: relative;
+}
+
+.main-left {
+    width: 70%;
+    /* min-width: 1500px; */
+    /* background: rgba(100, 100, 100, 0.25); */
+    position: relative;
+    transition-property: all;
+    transform-origin: center;
+    transition: 0.25s;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    background:rgba(100, 100, 100, 0.5);
+    z-index: 999;
+}
+
+.main-left h1 {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    font-size: 7.5rem;
+    font-style: italic;
+    font-family: 'Crete Round', serif;
+    font-weight: bold;
+    transition-property: all;
+    transition: 0.25s
+}
+
+.main-left p {
+    position: absolute;
+    width: 50%;
+    bottom: 5%;
+    left: 5%;
+    font-size: 3rem;
+    font-style: italic;
+    font-family: 'Crete Round', serif;
+    transition-property: color;
+    transition: 0.25s
+}
+
+.main-arrows-container {
+    height: 100px;
+    width: 300px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 5%;
+    bottom: 5%;
+    display: flex;
+}
+
+.arrow {
+    /* backdrop-filter: blur(50px); */
+    margin-left: 20px;
+    height: 100px;
+    width: 100px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid black
+}
+
+.arrow :nth-child(1) {
+    height: 50%;
+    width: 50%;
+    transition: 0.25s
+}
+
+.arrow :nth-child(1):hover {
+    transform: scale(1.1);
+}
+
+.main-left-title {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    font-size: 5rem;
+    font-style: italic;
+    font-family: 'Crete Round', serif;
+}
+
+.expand-btn {
+    width: 15px;
+    height: 200px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    right: 2%;
+    background: rgba(100, 100, 100);
+    border-radius: 12px;
+    transition: 0.1s;
+}
+
+.expand-btn:hover {
+    transform: scale(1.25);
+    cursor: pointer
+}
+
+.expand-menu {
+    backdrop-filter: blur(50px);
+    border: 2px solid black;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    z-index: 999;
+    top: 2.5%;
+    left: 2.5%;
+    transition: 0.1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.expand-menu:hover {
+    transform: scale(1.25);
+    cursor: pointer
+}
+
+.expand-menu img {
+    max-height: 75%
+}
+
+.main-right {
+    width: 30%;
+    transition-property: width;
+    transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.right-panel-overlay {
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    background: rgba(42, 65, 214, 0.5);
+    /* z-index: 9999; */
+    padding: 30px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 20px;
+}
+
+
+.full-width {
+    width: 100vw
+}
+
+@media (max-width: 768px) {
+    /* .main {
+        position: relative
+    } */
+    
+    .main-left {
+        display: none;
+        position: absolute;
+        width: 0%;
+    }
+
+    .main-right {
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        max-height: 100%;
+        overflow: scroll;
+    }
+
+    .right-panel-overlay {
+        padding: 0px;
+        width: 100%;
+        max-width: 100%;
+    }
+}

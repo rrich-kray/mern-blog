@@ -1,0 +1,36 @@
+.menu {
+    height: 50px;
+    width: 300px;
+    top: 2.5%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    border-radius: 30px;
+    backdrop-filter: blur(50px);
+    z-index: 999;
+    transition-property: all;
+    transition: 0.25s;
+    border: 2px solid black;
+}
+
+.menu a {
+    color: white;
+    transition: 0.25s
+}
+
+.menu a:hover {
+    color: gold;
+}
+
+.btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
