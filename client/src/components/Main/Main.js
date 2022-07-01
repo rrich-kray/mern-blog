@@ -29,8 +29,6 @@ const Main = ({
     fetchPolicy: "no-cache",
   });
 
-  console.log(window.innerWidth);
-
   const context = useContext(AuthContext);
 
   const toggleMenuVisibility = () => {
@@ -58,6 +56,8 @@ const Main = ({
   const { data, isLoading, error } = useQuery(GET_POSTS, {
     fetchPolicy: "no-cache",
   });
+
+  console.log(data);
 
   const toggleWidth = () => {
     if (currentWidth === "100%") {
