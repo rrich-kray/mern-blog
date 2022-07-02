@@ -27,11 +27,6 @@ const Post = ({ post, changeActivePost, currentColor }) => {
   });
 
   const [createComment] = useMutation(CREATE_COMMENT, {
-    variables: {
-      content: formState.content,
-      user_id: context.user.data.id,
-      post_id: post.id,
-    },
     update(proxy) {
       window.location.replace("/");
     },
@@ -72,10 +67,22 @@ const Post = ({ post, changeActivePost, currentColor }) => {
             <input
               name="content"
               id="content"
-              placeholder="Write you comment here"
+              placeholder="Write your comment here"
               onChange={handleChange}
             ></input>
-            <button onClick={() => createComment()}>Submit Comment</button>
+            <button
+              onClick={() =>
+                createComment({
+                  variables: {
+                    content: formState.content,
+                    user_id: context.user.data.id,
+                    post_id: post.id,
+                  },
+                })
+              }
+            >
+              Submit Comment
+            </button>
           </div>
         )}
       </div>
