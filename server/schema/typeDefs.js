@@ -85,6 +85,8 @@ const typeDefs = gql`
       category_id: ID!
     ): Post
 
+    createCategory(category_name: String!): Category
+
     login(email: String!, password: String!): Auth
 
     deletePost(post_id: ID!): Post

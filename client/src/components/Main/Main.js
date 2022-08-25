@@ -3,13 +3,12 @@ import { AuthContext } from "../../context/authContext";
 import "./Main.css";
 import { useQuery, useLazyQuery } from "@apollo/client";
 import { GET_POSTS } from "../../utils/queries";
+import { GET_CATEGORIES } from "../../utils/queries";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import { GET_CATEGORIES } from "../../utils/queries";
 import Menu from "../Menu/Menu";
 import Form from "../Form/Form";
 import Tile from "../Tile/Tile";
-import { color } from "@mui/system";
 
 const Main = ({
   activePost,
@@ -19,6 +18,8 @@ const Main = ({
   activeSection,
   changeActiveSection,
 }) => {
+  // Graphql request is going through, but no data exists in the database
+  // Either migrate the data, or implement logic that accounts for no data being found
   const [currentIndex, changeCurrentIndex] = useState(0);
   const [isVisible, changeVisibility] = useState(false);
   const [isLoginVisible, changeLoginVisibility] = useState(false);
@@ -91,7 +92,22 @@ const Main = ({
   };
 
   if (!data) {
-    return <div>No data found</div>;
+    return (
+      <div
+        style={{
+          height: "100vh",
+          width: "100vw",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          fontWeight: "bold",
+          fontStyle: "italic",
+          fontSize: "2rem",
+        }}
+      >
+        Nothing here!
+      </div>
+    );
   }
 
   if (error) {
@@ -154,7 +170,7 @@ const Main = ({
           backgroundRepeat: "no-repeat",
         }}
       >
-        {error && <div>No data found</div>}
+        {/* {error && <div>No data found</div>} */}
         {isLoading && <div>Loading...</div>}
         <div className="overlay"></div>
         <h1 style={{ color: currentColor }}>

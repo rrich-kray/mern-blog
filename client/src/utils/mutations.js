@@ -1,4 +1,5 @@
 import { gql } from "@apollo/client";
+import { lexicographicSortSchema } from "graphql";
 
 export const CREATE_USER = gql`
   mutation createUser(
@@ -85,6 +86,15 @@ export const CREATE_TAG = gql`
     createTag(tag_name: $tag_name) {
       id
       tag_name
+    }
+  }
+`;
+
+export const CREATE_CATEGORY = gql`
+  mutation createCategory($category_name: String!) {
+    createCategory(category_name: $category_name) {
+      id
+      category_name
     }
   }
 `;

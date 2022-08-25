@@ -33,9 +33,7 @@ const Form = ({ formType, categories }) => {
   const [login] = useMutation(LOGIN, {
     update(proxy, { data: { login } }) {
       // login is what's returned
-      console.log(login); // same data as signup is returned
       context.login(login); // this saves the token to localStorage, updates state
-      console.log(context); // this logs correct context
       // window.location.replace("/");
     },
     onError({ graphQLErrors }) {

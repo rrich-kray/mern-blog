@@ -129,6 +129,10 @@ const resolvers = {
       return { user, token };
     },
 
+    createCategory: async (parent, args, context) => {
+      return await Category.create(args);
+    },
+
     login: async (parent, args, context) => {
       const user = await User.findOne({
         where: {

@@ -48,6 +48,7 @@ function AuthProvider(props) {
       type: "LOGIN",
       payload: userData,
     });
+    window.location.replace("/");
   };
 
   const logout = () => {
