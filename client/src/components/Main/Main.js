@@ -29,7 +29,9 @@ const Main = ({
     fetchPolicy: "no-cache",
   });
 
-  console.log(currentColor);
+  const { data, isLoading, error } = useQuery(GET_POSTS, {
+    fetchPolicy: "no-cache",
+  });
 
   const context = useContext(AuthContext);
 
@@ -54,10 +56,6 @@ const Main = ({
       changeAddPostVisibility(!isAddPostVisible);
     }
   };
-
-  const { data, isLoading, error } = useQuery(GET_POSTS, {
-    fetchPolicy: "no-cache",
-  });
 
   console.log(data);
 
